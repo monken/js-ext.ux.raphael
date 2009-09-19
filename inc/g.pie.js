@@ -69,12 +69,8 @@ Raphael.fn.g.piechart = function (cx, cy, r, values, opts) {
             if (opts.init) {
                 var ipath = sector(cx, cy, 1, angle, angle - 360 * values[i] / total).join(",");
             }
-            var path = sector(cx, cy, r, angle, angle - 360 * values[i] / total);
+            var path = sector(cx, cy, r, angle, angle -= 360 * values[i] / total);
             var p = this.path(opts.init ? ipath : path).attr({fill: opts.colors && opts.colors[i] || this.g.colors[i] || "#666", stroke: opts.stroke || "#fff", "stroke-width": (opts.strokewidth == null ? 1 : opts.strokewidth), "stroke-linejoin": "round"});
-            p.exposed = sector(cx - (cx - path.middle.x)/3, 
-                cy - (cy - path.middle.y)/3, 
-                r, angle, angle -= 360 * values[i] / total);
-            p.pluggedin = path;
             p.value = values[i];
             p.middle = path.middle;
             p.mangle = mangle;
@@ -107,8 +103,7 @@ Raphael.fn.g.piechart = function (cx, cy, r, values, opts) {
                     r: r,
                     value: values[j],
                     total: total,
-                    label: that.labels && that.labels[j],
-                    legend: opts.legend && opts.legend[values[j].order]
+                    label: that.labels && that.labels[j]
                 };
                 cover.mouseover(function () {
                     fin.call(o);
@@ -138,8 +133,7 @@ Raphael.fn.g.piechart = function (cx, cy, r, values, opts) {
                     r: r,
                     value: values[j],
                     total: total,
-                    label: that.labels && that.labels[j],
-                    legend: opts.legend && opts.legend[values[j].order]
+                    label: that.labels && that.labels[j]
                 };
                 f.call(o);
             })(series[i], covers[i], i);
@@ -161,8 +155,7 @@ Raphael.fn.g.piechart = function (cx, cy, r, values, opts) {
                     r: r,
                     value: values[j],
                     total: total,
-                    label: that.labels && that.labels[j],
-                    legend: opts.legend && opts.legend[values[j].order]
+                    label: that.labels && that.labels[j]
                 };
                 cover.click(function () { f.call(o); });
             })(series[i], covers[i], i);
