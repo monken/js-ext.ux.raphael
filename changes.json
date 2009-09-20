@@ -1,6 +1,8 @@
 {
     [0.03, '2009-09-19', [
-    'fixed the quicktip of the columnchart'
+    'fixed the quicktip of the columnchart',
+    'columnchart supports series',
+    'removed dependency on g.bar.js'
     ]]
     [0.02, '2009-09-19', [
     'added columnchart',

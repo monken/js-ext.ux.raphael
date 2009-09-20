@@ -53,29 +53,31 @@ Ext.onReady(function() {
             //         2000);
             //     } 
             // }, 
+            // {
+            //     xtype: 'rpiechart',
+            //     dataField: 'total',
+            //     categoryField: 'season',
+            //     store: pieStore,
+            //     radius: 80
+             //}, 
+             {
+                 xtype: 'rcolumnchart',
+                 store: barStore,
+                 yField: 'visits',
+                 xField: 'name'
+             }, 
             {
-                xtype: 'rpiechart',
-                dataField: 'total',
-                categoryField: 'season',
-                store: pieStore,
-                radius: 80
-            }, {
-                xtype: 'rcolumnchart',
-                store: barStore,
-                yField: 'views',
-                xField: 'name'
-            }, {
                 xtype: 'rcolumnchart',
                 store: barStore,
                 xField: 'name',
                 series: [{
                     type: 'column',
-                    yField: 'views',
-                    displayName: 'Page Views'
-                }, {
-                    type: 'column',
                     yField: 'visits',
                     displayName: 'Visits'
+                },{
+                    type: 'column',
+                    yField: 'views',
+                    displayName: 'Page Views'
                 }]
             }
         
@@ -84,9 +86,9 @@ Ext.onReady(function() {
     for(var i = 0; i < windows.length; i++) {
     var window = new Ext.Window({
         title: 'Rapahel',
-        width: 300,
-        height:300,
-        x: 300 * i,
+        width: 400,
+        height:400,
+        x: 400 * i,
         y: 0,
         layout: 'fit',
         plain:true,
@@ -98,18 +100,7 @@ Ext.onReady(function() {
     window.show();
 }
 
-new Ext.Window({
-    title: 'Rapahel',
-    width: 500,
-    height:400,
-    x: 300,
-    y: 300,
-    layout: 'fit',
-    plain:true,
-    bodyStyle:'padding:5px;',
-    buttonAlign:'center',
-    items: new Ext.ux.Raphael({ items : windows[2] })
-}).show();
+
 
 
 });
