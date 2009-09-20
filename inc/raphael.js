@@ -1619,7 +1619,8 @@ window.Raphael = (function () {
                 a["font-size"] && (s.fontSize = a["font-size"]);
                 a["font-weight"] && (s.fontWeight = a["font-weight"]);
                 a["font-style"] && (s.fontStyle = a["font-style"]);
-                paper.span.innerHTML = res.node.string.replace(/</g, "&#60;").replace(/&/g, "&#38;").replace(/\n/g, "<br>");
+                paper.span.innerHTML = res.node.string;
+                paper.span.innerHTML.replace(/</g, "&#60;").replace(/&/g, "&#38;").replace(/\n/g, "<br>");
                 res.W = a.w = paper.span.offsetWidth;
                 res.H = a.h = paper.span.offsetHeight;
                 res.X = a.x;
@@ -2120,8 +2121,8 @@ window.Raphael = (function () {
             }
             var c = paper.canvas = doc.createElement("div"),
                 cs = c.style;
-            width = parseFloat(width) || "512px";
-            height = parseFloat(height) || "342px";
+            width = parseFloat(width) || "512";
+            height = parseFloat(height) || "342";
             paper.width = width;
             paper.height = height;
             paper.coordsize = width + " " + height;
