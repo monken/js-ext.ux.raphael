@@ -2120,8 +2120,8 @@ window.Raphael = (function () {
             }
             var c = paper.canvas = doc.createElement("div"),
                 cs = c.style;
-            width = parseFloat(width) || "512px";
-            height = parseFloat(height) || "342px";
+            width = parseFloat(width) || "512";
+            height = parseFloat(height) || "342";
             paper.width = width;
             paper.height = height;
             paper.coordsize = width + " " + height;
