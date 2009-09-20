@@ -42,17 +42,18 @@ Ext.onReady(function() {
     
     var windows = [
         
-                { draw: function(paper) {
-                    var circle = paper.circle(50, 40, 10);
-                    circle.attr("fill", "#f00");
-                    circle.attr("stroke", "#fff");
-                    circle.animate({
-                        cx: 20,
-                        r: 20
-                    },
-                    2000);
-                } 
-            }, {
+            //     { draw: function(paper) {
+            //         var circle = paper.circle(50, 40, 10);
+            //         circle.attr("fill", "#f00");
+            //         circle.attr("stroke", "#fff");
+            //         circle.animate({
+            //             cx: 20,
+            //             r: 20
+            //         },
+            //         2000);
+            //     } 
+            // }, 
+            {
                 xtype: 'rpiechart',
                 dataField: 'total',
                 categoryField: 'season',
@@ -63,13 +64,26 @@ Ext.onReady(function() {
                 store: barStore,
                 yField: 'views',
                 xField: 'name'
+            }, {
+                xtype: 'rcolumnchart',
+                store: barStore,
+                xField: 'name',
+                series: [{
+                    type: 'column',
+                    yField: 'views',
+                    displayName: 'Page Views'
+                }, {
+                    type: 'column',
+                    yField: 'visits',
+                    displayName: 'Visits'
+                }]
             }
         
     ];
     
     for(var i = 0; i < windows.length; i++) {
     var window = new Ext.Window({
-        title: 'Resize Me',
+        title: 'Rapahel',
         width: 300,
         height:300,
         x: 300 * i,
@@ -78,15 +92,26 @@ Ext.onReady(function() {
         plain:true,
         bodyStyle:'padding:5px;',
         buttonAlign:'center',
-        items: new Ext.ux.Raphael({ items : windows[i] }),
-
-        buttons: [{
-            text: 'Send'
-        },{
-            text: 'Cancel'
-        }]
+        items: new Ext.ux.Raphael({ items : windows[i] })
     });
 
     window.show();
 }
+
+new Ext.Window({
+    title: 'Rapahel',
+    width: 500,
+    height:400,
+    x: 300,
+    y: 300,
+    layout: 'fit',
+    plain:true,
+    bodyStyle:'padding:5px;',
+    buttonAlign:'center',
+    items: new Ext.ux.Raphael({ items : windows[2] })
+}).show();
+
+
 });
+
+
