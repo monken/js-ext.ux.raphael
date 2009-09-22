@@ -138,7 +138,13 @@ Ext.onReady(function() {
     var changesStore = new Ext.data.JsonStore({
         data: {
             results: 3,
-            rows: [{
+            rows: [
+            {
+                version: '0.04',
+                date: '2009-09-21',
+                log: ['works now fine with IE', 'added highlight to the piechart']
+            },
+            {
                 version: '0.03',
                 date: '2009-09-20',
                 log: ['fixed the quicktip of the columnchart', 'columnchart support for series', 'removed dependency on g.bar.js', 'reduced payload by 15kb']
