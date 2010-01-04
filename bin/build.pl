@@ -16,14 +16,16 @@ my @files  = (
   'lib/Raphael/Layer.js',
   'lib/Raphael/Chart.js',
   'lib/Raphael/Chart/Column.js',
-  'lib/Raphael/Chart/Pie.js'
+  'lib/Raphael/Chart/Pie.js',
+  'lib/Raphael/Chart/StackedColumn.js',
+  'lib/Raphael/Chart/PercentageColumn.js'
 );
 
 my $js = "";
 foreach my $file(@files) {
     my $var;
     { local $/ = undef; local *FILE; open FILE, "<", $file or die; $var = <FILE>; close FILE }
-    if($var =~ /,[\s\\]*?[\]\}]/g) {
+    if($var =~ /,[\s\\]*?[\]\}]/smg) {
         warn $file . ' contains trailing comma: '. line_by_pos($var, pos($var));
     } elsif($var =~ /console\.log/g) {
         warn $file . ' contains console.log: '. pos($var);

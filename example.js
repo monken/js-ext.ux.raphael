@@ -96,7 +96,27 @@ Ext.onReady(function() {
     //         2000);
     //     } 
     // }, 
+	
     {
+        xtype: 'rpercentagecolumnchart',
+        xField: 'year',
+        store: stackedStore,
+        series: [{
+            yField: 'comedy',
+            displayName: 'Comedy'
+        },{
+            yField: 'action',
+            displayName: 'Action'
+        },{
+            yField: 'drama',
+            displayName: 'Drama'
+        },{
+            yField: 'thriller',
+            displayName: 'Thriller'
+        }]
+
+    },
+	{
         xtype: 'rstackedcolumnchart',
         xField: 'year',
         store: stackedStore,
@@ -148,7 +168,7 @@ Ext.onReady(function() {
 
     for (var i = 0; i < windows.length; i++) {
         var window = new Ext.Window({
-            title: 'Rapahel',
+            title: 'Raphael',
             width: 400,
             height: 400,
             x: (400 * i) % 800,
@@ -169,6 +189,16 @@ Ext.onReady(function() {
         data: {
             results: 3,
             rows: [
+            {
+                version: '0.06',
+                date: '2010-01-04',
+                log: ['switched to ExtJS 3.1.0', 'PercentageColumn clones the store instead of altering the original one', 'adjusted height of yAxis', 'fixed floating columns in IE']
+            },
+            {
+                version: '0.05',
+                date: '2009-12-01',
+                log: ['Height of bars adjusted', 'Pie: highlight label by scaling the button', 'new chart types: StackedColumn and PercentageColumn', 'Lots of bug fixes and improvements']
+            },
             {
                 version: '0.04',
                 date: '2009-09-21',
@@ -224,6 +254,7 @@ Ext.onReady(function() {
             singleSelect: true
         }),
         region: 'west',
+		width: 200,
         split: true,
         viewConfig: {forceFit: true }
     });
